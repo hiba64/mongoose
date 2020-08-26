@@ -78,7 +78,7 @@ personModel
 
 personModel
 .findById({
-  _id: "5f44cf66effa05104c248768",
+  _id: "5f44dedd18802522ec48d1bd",
 })
 .then((doc) => {
   console.log(doc);
@@ -88,7 +88,7 @@ personModel
 });
 //   Perform Classic Updates by Running Find, Edit, then Save
 
-personModel.findById("5f44cf66effa05104c248768", (err, person) => {
+personModel.findById("5f44cfabe547d400c402b5e6", (err, person) => {
   if (err) console.log(err);
   person.favoriteFoods.push("Kiwi");
   person.save((err, person) => {
@@ -96,7 +96,6 @@ personModel.findById("5f44cf66effa05104c248768", (err, person) => {
     console.log(person);
   });
 });
-
 // Perform New Updates on a Document Using model.findOneAndUpdate()
 
 personModel.findOneAndUpdate(
@@ -111,22 +110,21 @@ personModel.findOneAndUpdate(
 
 // Delete One Document Using model.findByIdAndRemove
 
-personModel.findOneAndRemove("5f44cf66effa05104c248768", (err, person) => {
+personModel.findOneAndRemove("5f46b45ec0470613ec2c4021", (err, person) => {
   if (err) console.log(err);
   console.log(person);
 });
-
 // MongoDB and Mongoose - Delete Many Documents with model.remove()
 
-personModel.deleteMany({ name: "Mary" }, (err, person) => {
+personModel.deleteMany({ name: "sami" }, (err, person) => {
   if (err) console.log(err);
   console.log("Person(s) with name 'sami' was deleted");
 });
 // Chain Search Query Helpers to Narrow Search Results
 
 personModel
-  .find({ favoriteFoods: { $in: ["Burrito"] } })
-  .sort({ name: 1 })
+  .find({ favoriteFoods: { $in: ["bread"] } })
+  .sort({name: 'asc'} )
   .limit(2)
   .select("-age")
   .exec()
